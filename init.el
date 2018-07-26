@@ -91,12 +91,6 @@
   (add-hook 'auto-compile-inhibit-compile-hook
             'auto-compile-inhibit-compile-detached-git-head))
 
-(use-package epkg
-  :straight t
-  :defer t
-  :init (setq epkg-repository
-              (expand-file-name "var/epkgs/" user-emacs-directory)))
-
 ;; set the os path
 (use-package exec-path-from-shell
   :straight t
