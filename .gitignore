@@ -1,0 +1,4 @@
+*.egg-info
+*.elc
+__pycache__/
+/auto_save_list
