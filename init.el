@@ -1,4 +1,4 @@
-(switch-to-buffer "*Messages*")
+(switch-to-buffer "*straight-process*")
 ;; STRAIGHT package manager https://github.com/raxod502/straight.el#features
 ;;
 (defvar bootstrap-version)
@@ -175,3 +175,5 @@
 ;; indent-tabs-mode: nil
 ;; End:
 ;;; init.el ends here
+
+(switch-to-buffer "*Scratch*")
