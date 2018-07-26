@@ -2,3 +2,10 @@
 *.elc
 __pycache__/
 /auto_save_list
+/backups
+/history
+/places
+/company-statistics-cache.el
+/projectile-bookmarks.eld
+/projectile.cache
+/auto-save-list
