@@ -66,3 +66,13 @@
     (set-face-attribute 'mode-line nil :font font :height 80)
     (set-face-attribute 'mode-line-inactive nil :font font :height 80))
   )
+
+(when (eq window-system 'w32)
+  (message "On Windows")
+  (let ((font "source code pro"))
+    (set-frame-font font)
+    (set-face-font 'default font)
+    (set-face-attribute 'default nil :height 110)
+    (set-face-attribute 'mode-line nil :font font :height 80)
+    (set-face-attribute 'mode-line-inactive nil :font font :height 80))
+  )
