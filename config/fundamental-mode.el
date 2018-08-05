@@ -254,10 +254,12 @@ Once: (projectile-kill-buffers)"
   :init
   (global-set-key [M-f9] 'multi-term)
   )
-(defun shell-hook ()
-   ;; (text-scale-decrease 1.5))
-    (text-scale-set 1.8))
-(add-hook 'shell-pop-in-hook 'shell-hook)
+
+;; wanted a smaller font term-buffer.. but how?!?
+;; (defun shell-hook ()
+;;    (text-scale-decrease 1.7))
+
+;; (add-hook 'term-mode-hook 'shell-hook)
 
 (use-package shell-pop
   :straight t

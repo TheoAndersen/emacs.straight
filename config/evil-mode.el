@@ -8,9 +8,14 @@
     (add-hook 'evil-insert-state-entry-hook (lambda () (set-cursor-color "orange")))
     (add-hook 'evil-visual-state-entry-hook (lambda () (set-cursor-color "orange")))
     (add-hook 'evil-emacs-state-entry-hook (lambda () (set-cursor-color "green")))
-    (add-hook 'evil-hook (lambda () (set-cursor-color "green")))
+    (add-hook 'evil-hook (lambda () (if (eq evil-state 'emacs)
+                                        (set-cursor-color "green")
+                                      (set-cursor-color "orange"))))
     (add-hook 'evil-operator-state-entry-hook (lambda () (set-cursor-color "orange")))
+    (add-hook 'evil-replace-state-entry-hook (lambda () (set-cursor-color "orange")))
     (add-hook 'evil-motion-state-entry-hook (lambda () (set-cursor-color "orange")))
+
+
     )
   :config
   (evil-mode 1)

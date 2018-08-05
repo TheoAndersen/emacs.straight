@@ -47,7 +47,8 @@
         (set-face-font 'default font)
         (set-face-attribute 'default nil :height 135)
         (set-face-attribute 'mode-line nil :font font :height 90)
-        (set-face-attribute 'mode-line-inactive nil :font font :height 90))
+        (set-face-attribute 'mode-line-inactive nil :font font :height 90)
+        (set-face-attribute 'term nil :height 90))
 
         ;; (set-face-attribute 'ansi-term nil :font font :height 90))
     ;; else
@@ -57,7 +58,8 @@
       (set-face-font 'default font)
       (set-face-attribute 'default nil :height 135)
       (set-face-attribute 'mode-line nil :font font :height 90)
-      (set-face-attribute 'mode-line-inactive nil :font font :height 90))
+      (set-face-attribute 'mode-line-inactive nil :font font :height 90)
+      (set-face-attribute 'term nil :font font :height 100))
     ))
 (when (eq window-system 'x)
   (message "On linux")
@@ -66,7 +68,8 @@
     (set-face-font 'default font)
     (set-face-attribute 'default nil :height 110)
     (set-face-attribute 'mode-line nil :font font :height 80)
-    (set-face-attribute 'mode-line-inactive nil :font font :height 80))
+    (set-face-attribute 'mode-line-inactive nil :font font :height 80)
+    (set-face-attribute 'term nil :font font :height 100))
   )
 (custom-set-faces
      (set-face-attribute 'neo-button-face      nil :height 115)
