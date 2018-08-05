@@ -15,7 +15,8 @@
           ("*Buffer List*" :select t :align below :size 0.33)
           ("*Help*" :select t :align below :size 0.5)
           ("*compilation*" :align right :size 0.5)
-          ("*elm-make*" :align right :size 0.5)))
+          ("*elm-make*" :align right :size 0.5)
+          ))
   (shackle-mode))
 
 (use-package swiper
@@ -213,11 +214,12 @@ Once: (projectile-kill-buffers)"
     (set-face-foreground 'flycheck-color-mode-line-warning-face nil)
     (set-face-foreground 'flycheck-color-mode-line-info-face nil)))
 
-;;
+;;s
 ;; Completion
 ;;
 (use-package company
   :straight t
+  :bind (("C-SPC" . company-complete))
   :config
   (progn
     (use-package company-statistics
@@ -233,6 +235,36 @@ Once: (projectile-kill-buffers)"
     )
   )
 
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*term*")))
+
+(use-package multi-term
+  :straight t
+  :config
+  (progn
+    (setq multi-term-program "/bin/bash")
+    )
+  :init
+  (global-set-key [M-f9] 'multi-term)
+  )
+
+(use-package shell-pop
+  :straight t
+  :config
+  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+  (setq shell-pop-term-shell "/bin/bash")
+  (setq shell-pop-full-span 't)
+  ;; need to do this manually or not picked up by `shell-pop'
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
+  (global-set-key [f9] 'shell-pop)
+  )
 ;;
 ;; Git related
 ;;
@@ -240,8 +272,8 @@ Once: (projectile-kill-buffers)"
   :straight t
   :defer t
   :bind ((:map ctl-x-map
-          ("g" . magit-status)
-          ("M-g" . magit-dispatch-popup)))
+               ("g" . magit-status)
+               ("M-g" . magit-dispatch-popup)))
   :config
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-modules
@@ -325,3 +357,33 @@ current project root"
   :straight t
   :config
   :bind ("C-c b" . ace-jump-buffer))
+
+
+(use-package all-the-icons
+  :straight t
+  )
+
+(use-package neotree
+  :straight t
+  :config
+  (progn
+    (global-set-key [f8] 'neotree-toggle)
+    (setq neo-autorefresh nil)
+    ;; (setq neo-theme 'icons) ;; not all icons are alighed properly :(
+    )
+  )
+
+(use-package all-the-icons-ivy
+  :straight t
+  :config
+  (all-the-icons-ivy-setup))
+
+(use-package all-the-icons-dired
+  :straight t
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :config
+  )
+
+(use-package logview
+  :straight t
+  )
