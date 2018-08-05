@@ -10,7 +10,6 @@
         "--single-quote" "--print-width 120" ))
   )
 
-(setq-default truncate-lines nil)
 
 (use-package rainbow-delimiters
   :straight t
@@ -67,7 +66,9 @@
   ;; (add-hook 'elm-mode-hook 'elm-oracle-setup-completion)
   ;; (add-hook 'elm-mode-hook 'elm-mode-generate-tags)
   (progn
-    (add-to-list 'company-backends 'company-elm)
+
+    ;; (add-hook 'elm-mode-hook 'elm-oracle-setup-completion)
+    (add-to-list 'company-backends '(company-elm :with company-dabbrev))
     (defvar elm-compile-arguments '("--yes" "--output=elm.js"))
     (setq elm-format-on-save 't)
     ;; (setq elm-tags-on-save 't)
@@ -95,6 +96,19 @@
   (interactive)
   (condition-case nil (elpy-goto-definition)
     (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
+
+(use-package tide
+  :straight t
+  :mode "\\.ts\\'"
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
+(use-package groovy-mode
+  :straight t
+  :mode "\\.groovy\\'"
+  )
 
 (use-package elpy
   :straight t
