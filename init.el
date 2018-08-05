@@ -54,6 +54,12 @@
   ;; highlight current line
   (global-hl-line-mode t)
   (set-default 'indicate-buffer-boundaries '((top . nil) (bottom . right)))
+
+  (setq truncate-partial-width-windows nil)
+  (set-default 'truncate-lines 't)
+  (setq-default word-wrap t)
+  (toggle-truncate-lines -1)
+
   ;; scroll one line at a time
   (setq scroll-step 1
         ;; ...and don't go bananas when scrolling
