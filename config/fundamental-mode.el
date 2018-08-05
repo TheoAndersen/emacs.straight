@@ -277,6 +277,8 @@ Once: (projectile-kill-buffers)"
 (use-package magit
   :straight t
   :defer t
+  :bind ([f6] . magit-status)
+  :bind ([M-f6] . magit-status)
   :bind ((:map ctl-x-map
                ("g" . magit-status)
                ("M-g" . magit-dispatch-popup)))
