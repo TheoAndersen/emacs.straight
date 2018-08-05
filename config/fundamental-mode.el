@@ -254,6 +254,10 @@ Once: (projectile-kill-buffers)"
   :init
   (global-set-key [M-f9] 'multi-term)
   )
+(defun shell-hook ()
+   ;; (text-scale-decrease 1.5))
+    (text-scale-set 1.8))
+(add-hook 'shell-pop-in-hook 'shell-hook)
 
 (use-package shell-pop
   :straight t
@@ -361,6 +365,8 @@ current project root"
 
 (use-package all-the-icons
   :straight t
+  :config
+  (setq all-the-icons-scale-factor 0.9)
   )
 
 (use-package neotree
@@ -369,20 +375,21 @@ current project root"
   (progn
     (global-set-key [f8] 'neotree-toggle)
     (setq neo-autorefresh nil)
-    ;; (setq neo-theme 'icons) ;; not all icons are alighed properly :(
+    (setq neo-theme 'icons) ;; not all icons are alighed properly :(
+
     )
   )
 
-(use-package all-the-icons-ivy
-  :straight t
-  :config
-  (all-the-icons-ivy-setup))
+;; (use-package all-the-icons-ivy
+;;   :straight t
+;;   :config
+;;   (all-the-icons-ivy-setup))
 
-(use-package all-the-icons-dired
-  :straight t
-  :hook (dired-mode . all-the-icons-dired-mode)
-  :config
-  )
+;; (use-package all-the-icons-dired
+;;   :straight t
+;;   :hook (dired-mode . all-the-icons-dired-mode)
+;;   :config
+;;   )
 
 (use-package logview
   :straight t
