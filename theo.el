@@ -80,3 +80,13 @@
      (set-face-attribute 'neo-banner-face      nil :height 115)
      (set-face-attribute 'neo-root-dir-face    nil :height 115)
      )
+
+(when (eq window-system 'w32)
+  (message "On Windows")
+  (let ((font "source code pro"))
+    (set-frame-font font)
+    (set-face-font 'default font)
+    (set-face-attribute 'default nil :height 110)
+    (set-face-attribute 'mode-line nil :font font :height 80)
+    (set-face-attribute 'mode-line-inactive nil :font font :height 80))
+  )
