@@ -136,8 +136,12 @@
                 (company-mode)))
     (company-mode +1)
     ;; (setq ansi-color-for-comint-mode t)
-
+    (add-hook 'elpy-mode-hook
+              '(lambda ()
+                 (when (eq major-mode 'python-mode)
+                   (add-hook 'before-save-hook 'elpy-black-fix-code))))
     (setq elpy-rpc-python-command "python3")
+
     (setq python-shell-interpreter "python3")
     ;;           python-shell-interpreter-args "--simple-prompt -i")
     ;; (require 'py-autopep8)

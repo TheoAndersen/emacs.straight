@@ -75,6 +75,8 @@
 
 (use-package projectile
   :straight t
+  :bind ([f7] . projectile-switch-project)
+  :bind ("C-c C-p C-p" . projectile-switch-project)
   :preface
   (defun mg/update-projectile-project-list ()
     "Discover projects in `~/Development/github.com' and

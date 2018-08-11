@@ -4,6 +4,7 @@
   (progn
     (setq evil-default-cursor t)
     (setq evil-want-integration nil)
+    (setq evil-want-fine-undo t)
     (add-hook 'evil-normal-state-entry-hook (lambda () (set-cursor-color "orange")))
     (add-hook 'evil-insert-state-entry-hook (lambda () (set-cursor-color "orange")))
     (add-hook 'evil-visual-state-entry-hook (lambda () (set-cursor-color "orange")))
@@ -27,7 +28,7 @@
   (evil-collection-init 'neotree)
   (evil-collection-init 'term)
   (evil-collection-init 'magit)
-  (evil-collection-init 'company)
+  ;; (evil-collection-init 'company)
   (evil-collection-init 'dired)
   (evil-collection-init 'ivy)
   (evil-collection-init 'python)
