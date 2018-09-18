@@ -110,6 +110,36 @@
   :mode "\\.groovy\\'"
   )
 
+(use-package cypher-mode
+  :straight t
+  :mode "\\.cypher\\'"
+  )
+
+(use-package docker-compose-mode
+  :straight t
+  )
+
+(use-package dockerfile-mode
+  :straight t
+  )
+
+(use-package blacken
+  :straight t
+  :config
+  (progn
+    (add-hook 'python-mode-hook 'blacken-mode)
+    )
+  )
+
+(use-package python-mode
+  :straight t
+  :mode ("\\.py\\'" . python-mode)
+  )
+
+(use-package color-identifiers-mode
+  :straight t
+  )
+
 (use-package elpy
   :straight t
   :config
@@ -134,15 +164,16 @@
                 ;; explicitly load company for the occasion when the deferred
                 ;; loading with use-package hasn't kicked in yet
                 (company-mode)))
+    (add-hook 'python-mode-hook 'color-identifiers-mode)
     (company-mode +1)
     ;; (setq ansi-color-for-comint-mode t)
-    (add-hook 'elpy-mode-hook
-              '(lambda ()
-                 (when (eq major-mode 'python-mode)
-                   (add-hook 'before-save-hook 'elpy-black-fix-code))))
-    (setq elpy-rpc-python-command "python3")
+    ;; (add-hook 'elpy-mode-hook
+    ;;           '(lambda ()
+    ;;              (when (eq major-mode 'python-mode)
+    ;;                (add-hook 'before-save-hook 'elpy-black-fix-code))))
+    (setq elpy-rpc-python-command "python")
 
-    (setq python-shell-interpreter "python3")
+    (setq python-shell-interpreter "python")
     ;;           python-shell-interpreter-args "--simple-prompt -i")
     ;; (require 'py-autopep8)
     ;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
