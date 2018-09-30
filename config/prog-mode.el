@@ -129,6 +129,8 @@
     (setq elpy-rpc-backend "jedi")
     ;; (add-hook 'venv-postactivate-hook 'jedi:stop-server)
     ;; (add-hook 'venv-postdeactivate-hook 'jedi:stop-server)
+    ;; Make vim-mode highlight words including _ which fits python very well
+    (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
     (add-hook 'python-mode-hook
               (lambda ()
                 ;; explicitly load company for the occasion when the deferred
