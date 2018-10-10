@@ -1,4 +1,5 @@
 (use-package simple
+
   :config
   ;; mode-line
   (setq uniquify-buffer-name-style 'forward)
@@ -437,3 +438,21 @@ current project root"
 (use-package logview
   :straight t
   )
+
+;; MOVING LINES UP AND DOWN
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+(global-set-key [(meta down)]  'move-line-down)
+(global-set-key [(meta up)]  'move-line-up)
