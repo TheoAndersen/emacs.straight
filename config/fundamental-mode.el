@@ -400,3 +400,7 @@ current project root"
 (use-package logview
   :straight t
   )
+
+(use-package git-timemachine
+  :straight t
+  )
