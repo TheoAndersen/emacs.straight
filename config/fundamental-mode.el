@@ -396,6 +396,9 @@ current project root"
 ;;   :hook (dired-mode . all-the-icons-dired-mode)
 ;;   :config
 ;;   )
+(use-package swiper
+  :config
+  :bind ("C-c C-o" . swiper))
 
 (use-package logview
   :straight t
