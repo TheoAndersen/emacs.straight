@@ -35,6 +35,8 @@
   :config
   (setq custom-safe-themes t)
   (load-theme 'seti)
+  (set-face-background 'highlight "darkblue")
+  ;; (set-face-foreground 'highlight "yellow")
   )
 
 (when (eq window-system 'ns)
