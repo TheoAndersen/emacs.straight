@@ -1,0 +1,41 @@
+semantic mode
+eyebrowse
+tide-mode
+low-key magit
+hydra
+multiple cursors
+evil-mc
+suword
+sword-mode
+imenu
+spartparens
+
+winner
+wgrep-ag
+
+diff-hl
+spaceline
+paredit
+key-chord
+
+
+narrowing
+stumpwm
+deadgrep
+
+dired-single
+dired-hide-dotfiles
+dired-recent
+dired-hacks
+
+swiped
+projectile-grep
+elscreen
+diff-hl
+
+
+
+persons making great emacs packages
+- aboabo
+- alphapapa
+- magnars

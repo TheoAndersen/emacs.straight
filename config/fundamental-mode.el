@@ -407,3 +407,14 @@ current project root"
 (use-package git-timemachine
   :straight t
   )
+
+(use-package diff-hl
+  ;; Highlight changed content, through colored fringe...
+  ;; Todo.. the fringe coloring, could be less invasive??
+  :straight t
+  :config
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+  (setq diff-hl-draw-borders 't)
+  (diff-hl-flydiff-mode)
+  (global-diff-hl-mode)
+  )
