@@ -164,8 +164,8 @@
 ;;                (list (regexp-quote (system-name)) nil nil)))
 
 (progn ; personalize
-  (let* ((files (list "config/fundamental-mode"
-                      "config/evil-mode"
+  (let* ((files (list "config/evil-mode"
+                      "config/fundamental-mode"
                       "config/prog-mode"
                       user-real-login-name)) ; load USER-NAME.el
          (default-directory user-emacs-directory))

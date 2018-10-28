@@ -13,7 +13,6 @@ spartparens
 winner
 wgrep-ag
 
-diff-hl
 spaceline
 paredit
 key-chord
@@ -28,10 +27,10 @@ dired-hide-dotfiles
 dired-recent
 dired-hacks
 
-swiped
-projectile-grep
-elscreen
-diff-hl
+- [ ] swiped
+- [ ] projectile-grep
+- [ ] elscreen
+- [X] diff-hl
 
 
 

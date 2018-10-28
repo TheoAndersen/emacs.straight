@@ -417,4 +417,11 @@ current project root"
   (setq diff-hl-draw-borders 't)
   (diff-hl-flydiff-mode)
   (global-diff-hl-mode)
+ )
+
+(use-package eyebrowse
+  :straight t
+  :config
+  (eyebrowse-mode)
+  (eyebrowse-setup-evil-keys)
   )
