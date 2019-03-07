@@ -73,6 +73,10 @@
   :straight t
   )
 
+(use-package restclient
+  :straight t
+  )
+
 (use-package projectile
   :straight t
   :bind ([f7] . projectile-switch-project)
@@ -100,6 +104,7 @@ by the Projectile project switcher"
     (setq projectile-enable-caching t)
     )
   :config
+  (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name))))
   (mg/update-projectile-project-list)
   (projectile-mode)
     (add-to-list 'projectile-globally-ignored-directories "elpa")
@@ -312,6 +317,9 @@ Once: (projectile-kill-buffers)"
   :defer t
   :config (setq dired-listing-switches "-alh"))
 
+(use-package dired-single
+  :straight t
+ )
 ;;
 ;; Help systems
 ;;

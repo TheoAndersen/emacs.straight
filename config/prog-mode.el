@@ -151,3 +151,11 @@
     (setq python-shell-prompt-detect-failure-warning nil) ;; to avoid that annoying warning on compile
     )
   )
+
+(use-package blacken
+  :straight t
+  :config
+  (progn
+    (add-hook 'python-mode-hook 'blacken-mode)
+    )
+  )
