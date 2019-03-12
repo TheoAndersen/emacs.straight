@@ -86,9 +86,9 @@
   (let ((font "source code pro"))
     (set-frame-font font)
     (set-face-font 'default font)
-    (set-face-attribute 'default nil :height 90)
-    (set-face-attribute 'mode-line nil :font font :height 50)
-    (set-face-attribute 'mode-line-inactive nil :font font :height 50)
+    (set-face-attribute 'default nil :height 115)
+    (set-face-attribute 'mode-line nil :font font :height 65)
+    (set-face-attribute 'mode-line-inactive nil :font font :height 65)
     (set-face-attribute 'term nil :font font :height 70)
   (custom-set-faces
      (set-face-attribute 'neo-button-face      nil :height 70)

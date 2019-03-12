@@ -15,6 +15,9 @@
   :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package web-mode
+  :straight t)
+
 (use-package flycheck-color-mode-line
   :straight t
   )
