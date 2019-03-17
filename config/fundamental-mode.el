@@ -1,4 +1,5 @@
 (use-package simple
+
   :config
   ;; mode-line
   (setq uniquify-buffer-name-style 'forward)
@@ -21,15 +22,21 @@
 
 (use-package swiper
   :straight t
+  :bind ("C-c C-o" . swiper)
   :config
   (ivy-mode 1))
 
 (use-package ivy
   :straight t
+  :bind ("C-c C-r" . ivy-resume)
   :config
   (setq ivy-use-selectable-prompt t
         ;; don't show recent closed items in various buffers
         ivy-use-virtual-buffers nil))
+
+(use-package hydra
+  :straight t
+  )
 
 (use-package counsel
   :straight t
@@ -90,8 +97,8 @@ by the Projectile project switcher"
     ;; Perform cleanup before adding projects
     (projectile-cleanup-known-projects)
     ;;Find the projects in the structure and add them
-    (let* ((default-directory "~/projects/")
-           (project-site-globs '("*" "*/*" "github.com/*/*" "gitlab.com/*/*")))
+    (let* ((default-directory "c:/Git/")
+           (project-site-globs '("*" "github.com/*/*" "gitlab.com/*/*")))
       (dolist (project-site-glob project-site-globs)
         (let ((projects-glob (expand-file-name project-site-glob)))
           (dolist (project (file-expand-wildcards projects-glob))
@@ -105,6 +112,30 @@ by the Projectile project switcher"
     )
   :config
   (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name))))
+  (setq projectile-completion-system 'ivy
+        projectile-enable-caching t
+        projectile-indexing-method 'alien)
+  ;; (when (executable-find "rg")
+  ;;   (progn
+  ;;     (defconst modi/rg-arguments
+  ;;       `("--line-number" ; line numbers
+  ;;         "--follow" ; follow symlinks
+  ;;         "--color never"
+  ;;         "--max-columns 150"        ;Emacs doesn't handle long line lengths very well
+  ;;         "--mmap") ; apply memory map optimization when possible
+  ;;       "Default rg arguments used in the functions in `projectile' package.")
+
+  ;;     (defun modi/advice-projectile-use-rg ()
+  ;;       "Always use `rg' for getting a list of all files in the project."
+  ;;       (mapconcat 'identity
+  ;;                  (append '("\\rg") ; used unaliased version of `rg': \rg
+  ;;                          modi/rg-arguments
+  ;;                          '("--null" ; output null separated results,
+  ;;                            "--files")) ; get file names matching the regex '' (all files)
+  ;;                  " "))
+
+  ;;     (advice-add 'projectile-get-ext-command
+  ;;                 :override #'modi/advice-projectile-use-rg)))
   (mg/update-projectile-project-list)
   (projectile-mode)
     (add-to-list 'projectile-globally-ignored-directories "elpa")
@@ -116,6 +147,7 @@ by the Projectile project switcher"
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (add-to-list 'projectile-globally-ignored-directories ".DS_Store")
     (add-to-list 'projectile-globally-ignored-directories "TAGS")
+    (add-to-list 'projectile-globally-ignored-directories ".git")
     (add-to-list 'projectile-globally-ignored-directories ".*")
   )
 
@@ -252,6 +284,9 @@ Once: (projectile-kill-buffers)"
         (ansi-term (getenv "SHELL")))
     (switch-to-buffer-other-window "*term*")))
 
+(setq explicit-shell-file-name "c:\\Program Files\\Git\\bin\\bash.exe")
+(setq explicit-bash.exe-args '("--login" "-i"))
+
 (use-package multi-term
   :straight t
   :config
@@ -370,6 +405,9 @@ current project root"
   :bind ("C-c o" . ace-window)
   )
 
+(use-package markdown-mode
+  :straight t
+  )
 ;; Jump fast between buffers
 (use-package ace-jump-buffer
   :straight t
@@ -389,7 +427,7 @@ current project root"
   (progn
     (global-set-key [f8] 'neotree-toggle)
     (setq neo-autorefresh nil)
-    (setq neo-theme 'icons) ;; not all icons are alighed properly :(
+    ;; (setq neo-theme 'icons) ;; not all icons are alighed properly :(
 
     )
   )
@@ -433,3 +471,20 @@ current project root"
   (eyebrowse-mode)
   (eyebrowse-setup-evil-keys)
   )
+;; MOVING LINES UP AND DOWN
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+(global-set-key [(meta down)]  'move-line-down)
+(global-set-key [(meta up)]  'move-line-up)

@@ -10,6 +10,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(highlight ((t (:background "cornsilk4"))))
  '(rainbow-delimiters-depth-1-face ((((class color) (min-colors 89)) (:foreground "#C0C0C0"))))
  '(rainbow-delimiters-depth-2-face ((((class color) (min-colors 89)) (:foreground "#B388FF"))))
  '(rainbow-delimiters-depth-3-face ((((class color) (min-colors 89)) (:foreground "#26A69A"))))
